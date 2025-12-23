@@ -190,6 +190,8 @@ const ProgramCard = ({ title, duration, price, features, icon: Icon, isPremium, 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const WHATSAPP_NUMBER = "94704622563";
+  
+  // This is your actual profile image link
   const PROFILE_IMAGE = "https://lh3.googleusercontent.com/d/1mp2s807T4Vj9_D49jEx6DpLTbDiULmcy";
 
   useEffect(() => {
@@ -225,7 +227,15 @@ export default function App() {
           </div>
           <div className="relative hidden lg:block animate-in zoom-in duration-1000">
             <div className="aspect-[4/5] rounded-[3rem] bg-white overflow-hidden shadow-2xl border-8 border-white">
-              <img src={PROFILE_IMAGE} alt="Darshana" className="w-full h-full object-cover" />
+              {/* Profile Image with Fallback */}
+              <img 
+                src={PROFILE_IMAGE} 
+                alt="Darshana Bandara" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.src = "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800";
+                }}
+              />
             </div>
             <div className="absolute -bottom-8 -left-8 bg-white p-8 rounded-3xl shadow-2xl border border-slate-100 max-w-[240px]">
               <Brain className="text-[#C5A059] mb-4" size={32} />
